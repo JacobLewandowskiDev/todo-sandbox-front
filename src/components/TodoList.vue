@@ -11,5 +11,4 @@
         <button class="container__button" @click=""><span id="plus">+</span> New Todo</button>
         </div>
     </div>
-    
 </template>
