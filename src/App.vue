@@ -4,8 +4,8 @@ import CreateTodo from './components/CreateTodo.vue'
 </script>
 
 <template>
-    <!-- <TodoList></TodoList> -->
-    <CreateTodo></CreateTodo>
+    <TodoList></TodoList>
+    <!-- <CreateTodo></CreateTodo> -->
 </template>
 
 <style scoped>

@@ -17,6 +17,24 @@
             <option class="form__dropdown__option" value="MEDIUM">MEDIUM</option>
             <option class="form__dropdown__option" value="LOW">LOW</option>
         </select>
+        <label class="form__label">Subtasks</label>
+        <br>
+        <div class="form__dropdown__subtasks">
+            <input class="form__input" type="text" placeholder="Name">
+            <br>
+            <input class="form__input" type="text" placeholder="Description">
+            <button class="form__button__delete">Delete</button>
+        </div>
+        <br class="form__break">
+        <hr class="form__line">
+        <input class="form__input" type="text" placeholder="Name">
+        <br>
+        <input class="form__input" type="text" placeholder="Description">
+        <br>
+        <button class="form__button__add">Add subtask</button>
+        <br class="form__break">
+        <button class="form__button__add">Create</button>
+        <br class="form__break">
     </form>
 </div>
 </template>
