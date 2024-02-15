@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<div class="container">
+    <div class="container">
     <form class="form">
         <label class="form__label">Task</label>
         <br>
@@ -17,6 +17,11 @@
             <option class="form__dropdown__option" value="MEDIUM">MEDIUM</option>
             <option class="form__dropdown__option" value="LOW">LOW</option>
         </select>
+        <div class="container__form__div">
+            <button class="form__container__div__button">Cancel</button>
+            <button class="form__container__div__button">Save</button>
+        </div>
+        <br class="form__break">
         <label class="form__label">Subtasks</label>
         <br>
         <div class="form__dropdown__subtasks">
@@ -32,8 +37,6 @@
         <input class="form__input" type="text" placeholder="Description">
         <br>
         <button class="form__button__add">Add subtask</button>
-        <br class="form__break">
-        <button class="form__button__add">Create Todo</button>
         <br class="form__break">
     </form>
 </div>

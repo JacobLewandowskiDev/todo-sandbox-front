@@ -43,9 +43,6 @@ body {
     margin-top: 15px;
 }
 
-.container__todo-list {
-}
-
 .container__todo-list__todo {
     border-bottom: 2px solid #c3c3c3;
     position: relative;
@@ -53,9 +50,14 @@ body {
     grid-template-columns: 2fr 0.5fr;
     grid-template-rows: 60px 80px;
     column-gap: 10px;
-    width: 90%;
     margin: 0 auto;
+}
 
+.container__todo-list__title-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
 }
 
 .container__todo-list__todo__name {
@@ -105,7 +107,14 @@ body {
     overflow: hidden;
 }
 
-.container__button, .form__button__delete, .form__button__add, .conteiner__todo-list__title-div__addtodo--button  {
+.container__form__div {
+    display: flex;
+    justify-content: end;
+    flex-basis: 0;
+
+}
+
+.container__button, .form__button__delete, .form__button__add, .container__todo-list__title-div__addtodo--button, .form__container__div__button {
     background-color: #2e43ff;
     color: #ffffff;
     font-size: 1.3em;
@@ -122,17 +131,41 @@ body {
     transition-duration: 0.2s;
 }
 
-.conteiner__todo-list__title-div__addtodo--button {
+.form__container__div__button {
+    width: 6.5em;
+}
+
+.form__container__div__button:last-child {
+    margin-left: 2em;
+}
+
+.container__todo-list__title-div__addtodo--button {
     float: right;
 }
 
-.container__button:hover, .form__button__add:hover, .conteiner__todo-list__title-div__addtodo--button:hover {
+.container__button:hover, .form__button__add:hover, .container__todo-list__title-div__addtodo--button:hover, .form__container__div__button:last-child:hover {
   background-color: #2237f3;
   color: #ffffff;
 }
 
-.container__button:active, .form__button__add:active, .conteiner__todo-list__title-div__addtodo--button:active {
+.container__button:active, .form__button__add:active, .container__todo-list__title-div__addtodo--button:active, .form__container__div__button:last-child:active {
     background-color: #6776ff;
+}
+
+.form__container__div__button:first-child {
+    background-color: initial;
+    color: #2e43ff;
+    border: 2px solid #cacaca;
+}
+
+.form__container__div__button:first-child:hover {
+    color: #0014cc;
+    border: 2px solid #a5a5a5;
+}
+  
+.form__container__div__button:first-child:active {
+    color: #99a1ee;
+    border: 2px solid #e9e9e9;
 }
 
 .container__button span {
@@ -141,14 +174,6 @@ body {
     position: relative;
     bottom: 3px;
     margin-right: 0.2em;
-}
-
-.conteiner__todo-list__title-div {
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
 }
 
 .form {
@@ -206,10 +231,6 @@ body {
     right: 0;
     background-color: red;
     scale: 1.25;
-}
-
-.form__dropdown__option {
-    text-align: center;
 }
 
 .form__break {
