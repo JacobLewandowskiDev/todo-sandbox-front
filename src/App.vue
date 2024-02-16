@@ -6,8 +6,8 @@ import TodoDetails from './components/TodoDetails.vue'
 
 <template>
     <TodoList></TodoList>
-    <CreateTodo></CreateTodo>
-    <TodoDetails></TodoDetails>
+    <!-- <CreateTodo></CreateTodo> -->
+    <!-- <TodoDetails></TodoDetails> -->
 </template>
 
 <style scoped>

@@ -1,15 +1,22 @@
-<script setup>
+<script>
+    export default {
+        methods: {
+        createTodo() {
+            console.log('Hello world');
+        }
+    }    
+}
 </script>
 
 <template>
     <div class="container">
-        <div id="empty_todo-list">
+        <div id="empty-todo-list">
             <h1 class="container__title">Todos</h1>
             <div class="container__empty-todo-list">
                 <h2 class="container__empty-todo-list__title">No todos</h2>
                 <p class="container__empty-todo-list__body">Get started by creating a new todo</p>
                 <br>
-            <button class="container__button" @click=""><span id="plus">+</span> New Todo</button>
+            <button class="container__button" v-on:click="createTodo"><span id="plus">+</span> New Todo</button>
             </div>
         </div>
 
@@ -38,3 +45,16 @@
         </div>
     </div>
 </template>
+
+<style>
+    #empty-todo-list {
+        display: block;
+        visibility: visible;
+    }
+
+    #todo-list {
+        display: none;
+        visibility: hidden;
+    }
+
+</style>
