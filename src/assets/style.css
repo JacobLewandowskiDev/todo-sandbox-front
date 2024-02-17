@@ -32,25 +32,15 @@ body {
     align-items: center;
 }
 
-.container__empty-todo-list__title, .container__todo-list__todo__name {
+.container__empty-todo-list__title {
     font-size: 1.1em;
     font-weight: 800;
 }
 
-.container__empty-todo-list__body, .container__todo-list__todo__body {
+.container__empty-todo-list__body {
     color: #777777;
     font-size: 1.2em;
     margin-top: 15px;
-}
-
-.container__todo-list__todo {
-    border-bottom: 2px solid #c3c3c3;
-    position: relative;
-    display: grid;
-    grid-template-columns: 2fr 0.5fr;
-    grid-template-rows: 60px 80px;
-    column-gap: 10px;
-    margin: 0 auto;
 }
 
 .container__todo-list__title-div {
@@ -58,53 +48,6 @@ body {
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-}
-
-.container__todo-list__todo__name {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    display: flex;
-    align-items: center;
-    text-wrap: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.container__todo-list__todo__priority {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffb3b3;
-    color: #c02b2b;
-    font-weight: bold;
-    width: fit-content;
-    padding: 1em;
-    border-radius: 50000em;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    justify-self: right;
-}
-
-#container__todo-list__todo__priority--high {
-    background-color: #ffb3b3;
-    color: #c02b2b;
-}
-
-#container__todo-list__todo__priority--medium {
-    background-color: #ffd8b3;
-    color: #b25009;
-}
-
-#container__todo-list__todo__priority--low {
-    background-color: #fdffb3;
-    color: #998a00;
-}
-
-.container__todo-list__todo__body  {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 
 .container__form__div {
