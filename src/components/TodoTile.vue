@@ -42,7 +42,7 @@ export default {
     grid-template-rows: 40px 80px;
     column-gap: 10px;
     margin: 0 auto;
-    padding-top: 1rem;
+    padding-top: .5rem;
     cursor: pointer;
     text-decoration: none;
 }
@@ -70,6 +70,7 @@ export default {
     width: fit-content;
     height: fit-content;
     padding: 0.3rem 1rem;
+    margin: auto 0;
     border-radius: 50000rem;
     grid-column-start: 2;
     grid-column-end: 3;
