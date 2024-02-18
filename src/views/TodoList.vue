@@ -1,6 +1,7 @@
 <script scoped>
     import TodoTile from '../components/TodoTile.vue';
     import EmptyTodoList from '../components/EmptyTodoList.vue';
+    import MockTodoList from '../data/MockTodoList.json';
 
     export default {
         components: {
@@ -8,30 +9,57 @@
             EmptyTodoList
         },
 
-        methods: {
-            createTodo() {
-                console.log('Hello world');
+        data() {
+            return {
+                todos: []
             }
-        }    
+        },
+
+        created() {
+            // Simulating asynchronous fetch from API using setTimeout - For TESTING purposes only
+            setTimeout(() => {
+            // Assigning mock data to todos array
+            this.todos = MockTodoList;
+            }, 1000); // Simulating delay
+        },
+
+        //Fetch actual data from the server
+        // created() {
+        //     this.fetchTodos();
+        // },
+
+        methods: {
+            async fetchTodos() {
+                try {
+                    const response = await fetch('/todos');
+                    if(!response.ok) {
+                        throw new Error('Failed to fetch todolist data');
+                    }
+                    const data = await response.json();
+                    this.todos = data;
+                } catch (error) {
+                    
+                }
+            }
+        }
+        
     }
 </script>
 
 <template>
     <div class="container">
-        <div class="container__empty-list">
-           <EmptyTodoList/>
+        <div v-if="todos.length === 0" class="container__empty-list">
+            <EmptyTodoList/>
         </div>
 
-        <div class="container__todo-list">
+        <div v-if="todos.length > 0" class="container__todo-list">
             <div class="container__todo-list__div">
                 <h1 class="container__todo-list__div__title">Todos</h1>
                <router-link class="container__todo-list__div__addtodo" :to="{ name: 'Create' }" tag="button">Add new Todo</router-link>
             </div>
             
             <div class="container__todo-list__todos">
-                <TodoTile/>
-                <TodoTile/>
-                <TodoTile/>
+                <TodoTile v-for="todo in todos" :key="todo.id" :todo="todo"/>
             </div>
         </div>
     </div>
@@ -53,6 +81,6 @@
 }
 
 .container__todo-list__todos {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 </style>

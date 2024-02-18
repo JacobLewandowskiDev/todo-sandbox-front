@@ -1,17 +1,36 @@
-<script>
+<script scoped>
+export default {
+    props: {
+        todo: {
+        type: Object,
+        required: true
+        }
+    },
 
+    methods: {
+        getPriorityClass(priority) {
+            switch (priority) {
+                case 'HIGH':
+                    return 'todo__priority--high';
+                case 'MEDIUM': 
+                    return 'todo__priority--medium';
+                case 'LOW': 
+                    return 'todo__priority--low';
+                default:
+                    return 'todo__priority--medium';
+            } 
+        }
+    }
+}
+ 
 </script>
 
 <template>
-     <div class="todo">
-        <h2 class="todo__name">Read a book</h2>
-        <p class="todo__priority">MEDIUM</p>
-        <p class="todo__body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-            Ipsum nobis quidem voluptas magnam numquam qui, iure reprehenderit dolor deserunt commodi, eum nisi 
-            nihil vitae velit mollitia aut cumque, praesentium consequuntur expedita corrupti? Ad, iusto? Soluta 
-            adipisci nihil recusandae error id. Sit maxime id soluta! Corporis beatae commodi nulla fugit error.
-        </p>
-    </div>
+    <router-link class="todo" :to="{ name: 'Details' }" tag="button">
+        <h2 class="todo__name"> {{ todo.name }}</h2>
+        <p :class="['todo__priority', getPriorityClass(todo.priority)]">{{ todo.priority }}</p>
+        <p class="todo__body">{{ todo.description }}</p>
+    </router-link>
 </template>
 
 <style scoped>
@@ -25,6 +44,7 @@
     margin: 0 auto;
     padding-top: 1rem;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .todo:hover {
@@ -32,7 +52,7 @@
 }
 
 .todo__name {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 800;
     grid-column-start: 1;
     grid-column-end: 2;
@@ -41,18 +61,15 @@
     text-wrap: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    color: #000000;
 }
 
 .todo__priority {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffb3b3;
-    color: #c02b2b;
+    text-align: center;
     font-weight: bold;
     width: fit-content;
     height: fit-content;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem;
     border-radius: 50000rem;
     grid-column-start: 2;
     grid-column-end: 3;

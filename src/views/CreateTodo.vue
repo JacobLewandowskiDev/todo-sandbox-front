@@ -4,6 +4,8 @@
 
 <template>
 <div class="container">
+    <router-link class="back-to-main" :to="{ name: 'Home' }" tag="button">X</router-link>
+
     <form class="form">
         <label class="form__label">Task</label>
         <br>

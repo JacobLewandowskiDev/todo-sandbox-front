@@ -13,38 +13,38 @@
 
 <style scoped>
 .title {
-    margin-bottom: 45px;
-    font-size: 2em;
+    margin-bottom: 2rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
 .empty-list {
     position: relative;
     border: dashed 0.2em #848484;
-    border-radius: 10px;
-    height: 18em;
-    padding: 10px;
+    border-radius: 0.8rem;
+    height: 18rem;
+    padding: 0.8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .empty-list__title {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 800;
 }
 
 .empty-list__body {
     color: #777777;
     font-size: 1.2em;
-    margin-top: 15px;
+    margin-top: 1rem;
 }
 
 .empty-list__button span {
-    font-size:1.8em;
+    font-size: 1.8em;
     font-weight: 100;
     position: relative;
-    bottom: 3px;
-    margin-right: 0.2em;
+    bottom: 0.1rem;
+    margin-right: 0.4rem;
 }
 </style>
