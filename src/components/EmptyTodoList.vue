@@ -7,7 +7,7 @@
         <h2 class="empty-list__title">No todos</h2>
         <p class="empty-list__body">Get started by creating a new todo</p>
         <br>
-    <button class="empty-list__button" v-on:click="createTodo"><span id="plus">+</span> New Todo</button>
+    <router-link class="empty-list__button" :to="{ name: 'Create'}" tag="button"><span id="plus">+</span> New Todo</router-link>
     </div>
 </template>
 

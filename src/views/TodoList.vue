@@ -1,6 +1,6 @@
 <script scoped>
-    import TodoTile from './TodoTile.vue';
-    import EmptyTodoList from './EmptyTodoList.vue';
+    import TodoTile from '../components/TodoTile.vue';
+    import EmptyTodoList from '../components/EmptyTodoList.vue';
 
     export default {
         components: {
@@ -25,7 +25,7 @@
         <div class="container__todo-list">
             <div class="container__todo-list__div">
                 <h1 class="container__todo-list__div__title">Todos</h1>
-                <button class="container__todo-list__div__addtodo">Add New Todo</button>
+               <router-link class="container__todo-list__div__addtodo" :to="{ name: 'Create' }" tag="button">Add new Todo</router-link>
             </div>
             
             <div class="container__todo-list__todos">
@@ -38,7 +38,6 @@
 </template>
 
 <style scoped>
-
 .container__todo-list {
     margin-top: 2rem;
 }
