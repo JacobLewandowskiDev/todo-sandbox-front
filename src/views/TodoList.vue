@@ -2,11 +2,13 @@
     import TodoTile from '../components/TodoTile.vue';
     import EmptyTodoList from '../components/EmptyTodoList.vue';
     import MockTodoList from '../data/MockTodoList.json';
+    import Pagintation from '../components/Pagintation.vue'
 
     export default {
         components: {
             TodoTile,
-            EmptyTodoList
+            EmptyTodoList,
+            Pagintation
         },
 
         data() {
@@ -61,6 +63,7 @@
             <div class="container__todo-list__todos">
                 <TodoTile v-for="todo in todos" :key="todo.id" :todo="todo"/>
             </div>
+            <Pagintation v-bind:todos="todos"/>
         </div>
     </div>
 </template>

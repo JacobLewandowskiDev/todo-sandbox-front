@@ -8,7 +8,7 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     linkActiveClass: 'active',
     routes: [
-        {path: '/todos', name: 'Home', component: TodoList},
+        {path: '/', name: 'Home', component: TodoList},
         {path: '/todos', name: 'Todos', component: TodoList},
         {path: '/create', name: 'Create', component: CreateTodo},
         {path: '/details', name: 'Details', component: TodoDetails},
