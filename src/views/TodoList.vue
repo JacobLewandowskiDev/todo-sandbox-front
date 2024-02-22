@@ -2,18 +2,20 @@
     import TodoTile from '../components/TodoTile.vue';
     import EmptyTodoList from '../components/EmptyTodoList.vue';
     import MockTodoList from '../data/MockTodoList.json';
-    import Pagintation from '../components/Pagintation.vue'
+    import Pagination from '../components/Pagination.vue'
 
     export default {
         components: {
             TodoTile,
             EmptyTodoList,
-            Pagintation
+            Pagination
         },
 
         data() {
             return {
-                todos: []
+                todos: [],
+                currentPage: 1,
+                pageSize: 5
             }
         },
 
@@ -42,9 +44,31 @@
                 } catch (error) {
                     
                 }
+            },
+
+            getNumOfPages() {
+                let listLength = this.todos.length;
+                let numOfIndexes = 1;
+                if(listLength % this.pageSize === 0) {
+                    return numOfIndexes;
+                } else {
+                    numOfIndexes = Math.ceil(listLength / this.pageSize);
+                    return numOfIndexes;
+                }
+            },
+
+            // Get the todos to display for the current page
+            getCurrentPageTodos() {
+                const startIndex = (this.currentPage - 1) * this.pageSize;
+                const endIndex = startIndex + this.pageSize;
+                return this.todos.slice(startIndex, endIndex);
+            },
+
+            // Handle page change event from Pagination component
+            onPageChange(page) {
+                this.currentPage = page;
             }
-        }
-        
+        }            
     }
 </script>
 
@@ -59,11 +83,12 @@
                 <h1 class="container__todo-list__div__title">Todos</h1>
                <router-link class="container__todo-list__div__addtodo" :to="{ name: 'Create' }" tag="button">Add new Todo</router-link>
             </div>
-            
+
             <div class="container__todo-list__todos">
-                <TodoTile v-for="todo in todos" :key="todo.id" :todo="todo"/>
+                <TodoTile v-for="todo in getCurrentPageTodos()" :key="todo.id" :todo="todo"/>
             </div>
-            <Pagintation v-bind:todos="todos"/>
+
+            <Pagination :numOfPages="getNumOfPages()" :currentPage="currentPage" @pageChange="onPageChange"/>
         </div>
     </div>
 </template>
