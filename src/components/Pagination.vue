@@ -16,7 +16,7 @@
 
         methods: {
             goToPage(pageIndex) {
-                this.currentPage = pageIndex; // Update the current page
+                this.currentPage = pageIndex;
                 this.$emit('pageChange', pageIndex);
             },
             goToPrevPage() {
@@ -36,9 +36,9 @@
 
 <template>
       <div class="pagination">
-    <button class="pagination__button" @click="goToPrevPage()">&#60;</button>
+    <button class="pagination__button" :class="{ 'inactive': currentPage === 1}" @click="goToPrevPage()">&#60;</button>
     <div class="pagination__number" v-for="pageIndex in pageIndexes" :key="pageIndex" :class="{ 'active': pageIndex === currentPage }" @click="goToPage(pageIndex)"> {{ pageIndex }} </div>
-    <button class="pagination__button" @click="goToNextPage()">&#62;</button>
+    <button class="pagination__button" :class="{ 'inactive': currentPage === numOfPages}" @click="goToNextPage()">&#62;</button>
   </div>
 
 </template>
@@ -77,6 +77,10 @@
     background-color: #2e43ff;
     color: #ffffff;
     border: 0.1rem solid #2e43ff;
+}
+
+.inactive {
+    color: #c3c3c3;
 }
 
 .pagination__button:active,

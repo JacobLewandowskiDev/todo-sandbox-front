@@ -19,13 +19,10 @@
             }
         },
 
+        // Simulating asynchronous fetch from API using setTimeout - For TESTING purposes only -  Assigning mock data to todos array
         created() {
-            // Simulating asynchronous fetch from API using setTimeout - For TESTING purposes only
-            setTimeout(() => {
-            // Assigning mock data to todos array
             this.todos = MockTodoList;
-            }, 1000); // Simulating delay
-        },
+            },
 
         //Fetch actual data from the server
         // created() {
