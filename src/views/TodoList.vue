@@ -45,13 +45,7 @@
 
             getNumOfPages() {
                 let listLength = this.todos.length;
-                let numOfIndexes = 1;
-                if(listLength % this.pageSize === 0) {
-                    return numOfIndexes;
-                } else {
-                    numOfIndexes = Math.ceil(listLength / this.pageSize);
-                    return numOfIndexes;
-                }
+                return Math.ceil(listLength / this.pageSize);
             },
 
             // Get the todos to display for the current page
