@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-    <router-link class="todo" :to="{ name: 'Details' }" tag="button">
+    <router-link class="todo" :to="{ name: 'Details', params: { id:todo.id } }" tag="button">
         <h2 class="todo__name"> {{ todo.name }}</h2>
         <p :class="['todo__priority', getPriorityClass(todo.priority)]">{{ todo.priority }}</p>
         <p class="todo__body">{{ todo.description }}</p>

@@ -26,7 +26,6 @@ html {
     display: flex;
     justify-content: end;
     flex-basis: 0;
-
 }
 
 .empty-list__button, 
@@ -54,10 +53,6 @@ html {
     width: 6.5rem;
     display: flex;
     justify-content: center;
-}
-
-.form__container__div__button:last-child {
-    margin-left: 2rem;
 }
 
 .empty-list__button:hover, 
