@@ -4,7 +4,7 @@
 
 <template>
 <div class="container">
-    <router-link class="back-to-main" :to="{ name: 'Home' }" tag="button">X</router-link>
+    <router-link class="back-to-main" :to="{ name: 'Todos' }" tag="button">X</router-link>
 
     <form class="form">
         <label class="form__label">Task</label>
@@ -25,7 +25,7 @@
             <input class="form__input" type="text" placeholder="Name">
             <br>
             <input class="form__input" type="text" placeholder="Description">
-            <button class="form__button__delete">Delete</button>
+            <button class="form__button--delete">Delete</button>
         </div>
         <br class="form__break">
         <hr class="form__line">
@@ -33,9 +33,9 @@
         <br>
         <input class="form__input" type="text" placeholder="Description">
         <br>
-        <button class="form__button__add">Add subtask</button>
+        <button class="form__button--add">Add subtask</button>
         <br class="form__break">
-        <button class="form__button__add">Create Todo</button>
+        <button class="form__button--add">Create Todo</button>
         <br class="form__break">
     </form>
 </div>
