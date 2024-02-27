@@ -5,7 +5,24 @@
 }
 
 :root {
-    /* WIP */
+    --button-font-color: #ffffff;
+    --add-create-button: #2e43ff;
+    --add-create-button-hover: #2237f3;
+    --add-create-button-active: #6776ff;
+    --delete-button: #ff2e2e;
+    --delete-button-hover: #ff1515;
+    --delete-button-active: #f56161;
+    --cancel-button-font-color-hover: #0014cc;
+    --cancel-button-font-color-active: #99a1ee;
+    --close-button: #000000;
+    --close-button-hover: #5f5f5f;
+    --scrollbar-colors: #c3c3c300 #ffffff00;
+    --scrollbar-colors-hover: #c3c3c3 #ffffff00;
+    --form-line: 1px solid #c3c3c3;
+    --input-font-color: #757575;
+    --input-border: solid 2px #d2d2d2;
+    --input-dropdown-font-color: #444444;
+    --input-dropdown-border: solid 2px #505050; 
 }
 
 html {
@@ -41,8 +58,8 @@ html {
 .form__container__div--button {
     display: inline-flex;
     align-items: center;
-    background-color: #2e43ff;
-    color: #ffffff;
+    background-color: var(--add-create-button);
+    color: var(--button-font-color);
     font-size: 1.5rem;
     height: 3rem;
     padding: 0 2rem;
@@ -65,30 +82,30 @@ html {
 .form__button--add:hover, 
 .container__todo-list__div__addtodo:hover, 
 .form__container__div--button:last-child:hover {
-  background-color: #2237f3;
-  color: #ffffff;
+  background-color: var(--add-create-button-hover);
+  color: var(--button-font-color);
 }
 
 .empty-list__button:active, 
 .form__button--add:active, 
 .container__todo-list__div__addtodo:active, 
 .form__container__div--button:last-child:active {
-    background-color: #6776ff;
+    background-color: var(--add-create-button-active);
 }
 
 .form__container__div--button:first-child {
     background-color: initial;
-    color: #2e43ff;
+    color: var(--add-create-button);
     border: 2px solid #cacaca;
 }
 
 .form__container__div--button:first-child:hover {
-    color: #0014cc;
+    color: var(--cancel-button-font-color-hover);
     border: 2px solid #a5a5a5;
 }
   
 .form__container__div--button:first-child:active {
-    color: #99a1ee;
+    color: var(--cancel-button-font-color-active);
     border: 2px solid #e9e9e9;
 }
 
@@ -108,13 +125,13 @@ html {
     font-size: 1.2rem;
     padding: 0.6rem;
     border-radius: 0.2rem;
-    color: #757575;
-    border: solid 2px #d2d2d2;
+    color: var(--input-font-color);
+    border: var(--input-border);
 }
 
 .form__dropdown {
-    border: solid 2px #505050;
-    color: #444444;
+    border: var(--input-dropdown-border);
+    color: var(--input-dropdown-font-color);
 }
 
 .form__button--delete,
@@ -123,21 +140,21 @@ html {
 .form__button--add  {
     display: block;
     float: right;
-    background-color: #ff2e2e;
+    background-color: var(--delete-button);
     margin-bottom: 3rem;
 }
 
 .form__button--add {
-    background-color: #2e43ff;
+    background-color: var(--add-create-button);
 }
 
 .form__button--delete:hover, .subtasklist__subtask__delete:hover, .form__container__form__div__button--delete:hover {
-    background-color: #ff1515;
-    color: #ffffff;
+    background-color: var(--delete-button-hover);
+    color: var(--button-font-color);
 }
   
 .form__button--delete:active, .subtasklist__subtask__delete:active, .form__container__form__div__button--delete:active {
-    background-color: #f56161;
+    background-color: var(--delete-button-active);
 }
 
 .form__dropdown {
@@ -153,7 +170,7 @@ html {
 }
 
 .form__line {
-    border-top: 1px solid #c3c3c3;
+    border-top: var(--form-line);
     margin-bottom: 3rem;
 }
 
@@ -168,11 +185,28 @@ html {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    color: #000000;
+    color: var(--close-button);
     text-decoration: none;
 }
 
 .back-to-main:hover {
-    color: #5f5f5f;
+    color: var(--close-button-hover);
+}
+
+.subtasklist {
+    height: 30rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-color: var(--scrollbar-colors);
+    scrollbar-width: thin;
+    transition: .2s;
+}
+
+.subtasklist:hover {
+    scrollbar-color: var(--scrollbar-colors-hover);
+}
+
+.subtasklist__subtask__delete {
+    width: 100%;
 }
 

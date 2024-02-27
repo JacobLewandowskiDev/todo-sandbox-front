@@ -1,5 +1,14 @@
-<script>
+<script scoped>
+    import SubtaskList from '../components/SubtaskList.vue';
+    import AddSubtask from '../components/AddSubtask.vue';
 
+
+    export default {
+        components: {
+            SubtaskList,
+            AddSubtask
+        }
+    }
 </script>
 
 <template>
@@ -21,20 +30,8 @@
         </select>
         <label class="form__label">Subtasks</label>
         <br>
-        <div class="form__dropdown__subtasks">
-            <input class="form__input" type="text" placeholder="Name">
-            <br>
-            <input class="form__input" type="text" placeholder="Description">
-            <button class="form__button--delete">Delete</button>
-        </div>
-        <br class="form__break">
-        <hr class="form__line">
-        <input class="form__input" type="text" placeholder="Name">
-        <br>
-        <input class="form__input" type="text" placeholder="Description">
-        <br>
-        <button class="form__button--add">Add subtask</button>
-        <br class="form__break">
+        <SubtaskList/>
+        <AddSubtask/>       
         <button class="form__button--add">Create Todo</button>
         <br class="form__break">
     </form>

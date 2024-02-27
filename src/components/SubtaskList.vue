@@ -29,19 +29,12 @@
             <button class="subtasklist__subtask__delete" @click="handleDeleteStep()">Delete Subtask</button>
             <br class="form__break">
         </div>
-        
     </div>
     <hr class="form__line">
 </template>
 
 <style scoped>
-.subtasklist {
-    height: 30rem;
-    overflow: hidden;
-    overflow-y: scroll;
-}
-
-.subtasklist__subtask__delete {
-    width: 100%;
+.form__line {
+    margin-top: 0.5rem;
 }
 </style>
