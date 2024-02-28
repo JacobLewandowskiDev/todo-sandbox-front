@@ -9,7 +9,7 @@ const router = createRouter({
     routes: [
         {path: '/todos', name: 'Todos', component: TodoList},
         {path: '/create', name: 'Create', component: CreateTodo},
-        {path: '/details/:id', name: 'Details', component: TodoDetails},
+        {path: '/details/:id', name: 'Details', component: TodoDetails, props: true},
 
         // default redirect to home page
         { path: '/:pathMatch(.*)*', redirect: '/todos' }

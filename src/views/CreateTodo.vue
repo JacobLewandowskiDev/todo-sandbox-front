@@ -18,18 +18,16 @@
     <form class="form">
         <label class="form__label">Task</label>
         <br>
-        <input class="form__input" type="text" placeholder="Name">
+        <input class="form__input" type="text" placeholder="Task Name">
         <br>
-        <input class="form__input" type="text" placeholder="Description">
+        <input class="form__input" type="text" placeholder="Task Description">
         <br>
         <select class="form__dropdown">
-            <option value="" disabled selected hidden>Priority</option>
+            <option value="" disabled selected hidden>Task Priority</option>
             <option class="form__dropdown__option" value="HIGH">HIGH</option>
             <option class="form__dropdown__option" value="MEDIUM">MEDIUM</option>
             <option class="form__dropdown__option" value="LOW">LOW</option>
         </select>
-        <label class="form__label">Subtasks</label>
-        <br>
         <SubtaskList/>
         <AddSubtask/>       
         <button class="form__button--add">Create Todo</button>

@@ -1,5 +1,7 @@
 <script scoped>
-
+    export default {
+        
+    }
 </script>
 
 <template>
