@@ -194,7 +194,8 @@ html {
 }
 
 .subtasklist {
-    height: 30rem;
+    min-height: 10rem;
+    max-height: 30rem;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-color: var(--scrollbar-colors);
