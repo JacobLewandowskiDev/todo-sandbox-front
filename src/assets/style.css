@@ -28,6 +28,8 @@
 html {
     font-size: 16px;
     font-family: Helvetica, Arial, sans-serif;
+    scrollbar-color: var(--scrollbar-colors-hover);
+    scrollbar-width: thin;
 }
 
 .container {

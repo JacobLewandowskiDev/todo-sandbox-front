@@ -2,7 +2,7 @@
     export default {
         props: {
             todoId: {
-                required: true
+                required: false
             }
         },
 
@@ -16,7 +16,7 @@
 
         methods: {
             addStepToList() {
-                console.log("Step has been added to list");
+                console.log("Step (name):" + this.name + ", (desc.):" + this.description +"; has been added to array of steps");
                 // Create a new subtask object
                 const newSubtask = {
                     name: this.name,
