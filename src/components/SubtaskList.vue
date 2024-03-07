@@ -8,7 +8,7 @@
         },
         methods: {
             handleDeleteStep(stepId) {
-                //Make api call to delete step with stepId from todoList, then make GetTodoById call again to refresh list
+                //Make api call to delete step with stepId from todoList, then make GetTodoById call again to refresh list.
                 console.log("Delete step with id: " + stepId);
             }
         }
