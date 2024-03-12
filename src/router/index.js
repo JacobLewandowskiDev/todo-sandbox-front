@@ -3,6 +3,8 @@ import TodoList from '../views/TodoList.vue';
 import CreateTodo from '../views/CreateTodo.vue';
 import TodoDetails from '../components/TodoDetails.vue';
 
+export const apiUrl = 'http://localhost:8080';
+
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     linkActiveClass: 'active',

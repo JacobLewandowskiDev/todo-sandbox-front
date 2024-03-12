@@ -2,6 +2,7 @@
     import AddSubtask from '../components/AddSubtask.vue';
     import UpdateTodo from '../components/UpdateTodo.vue';
     import SubtaskList from '../components/SubtaskList.vue';
+    import { apiUrl } from '../router/index.js';
 
     export default {
         components: {
@@ -23,41 +24,25 @@
         },
 
         created() {
-            this.fetchTodo();
+            this.fetchTodoById(parseInt(this.id));
         },
 
         methods: {
-            fetchTodo() {
-                //Implement actual API Get call
-                //The code below is only for testing
-                const mockTodoData = {
-                    id: parseInt(this.id),
-                    name: "Todo Name",
-                    description: "Todo Description",
-                    priority: "HIGH",
-                    steps: [
-                    {
-                        "id": 1,
-                        "name": "Step 1 name",
-                        "description": "Description for Step 1"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Step 2 name",
-                        "description": "Description for Step 2"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Step 3 name",
-                        "description": "Description for Step 3"
-                    }]
-                };
-                this.todo = mockTodoData;
+            async fetchTodoById(id) {
+                try {
+                    const response = await fetch(apiUrl + '/todos/' + id);
+                    if(!response.ok) {
+                        throw new Error('Failed to fetch Todo object data');
+                    }
+                    const data = await response.json();
+                    this.todo = data;
+                } catch (error) {
+                    
+                }
             },
 
             handleCancel() {
-                console.log("Canceled update of todo, reverting changes.")
-                //go back to /todos
+                console.log("Canceled update of the todo, returning to main page.")
             },
 
             updateName(newName) {

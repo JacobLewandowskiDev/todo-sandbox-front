@@ -30,7 +30,7 @@ export default {
     <router-link class="todo" :to="{ name: 'Details', params: { id: todo.id } }" tag="button">
         <h2 class="todo__name"> {{ todo.name }}</h2>
         <p :class="['todo__priority', getPriorityClass(todo.priority)]">{{ todo.priority }}</p>
-        <p class="todo__body">{{ todo.description }}</p>
+        <p class="todo__body">{{ todo.description }}</p> <!-- This will be empty, since the backend call to GetAllTodos returns only the id, name, priority. Only GetById gets the full todo object. -->
     </router-link>
 </template>
 

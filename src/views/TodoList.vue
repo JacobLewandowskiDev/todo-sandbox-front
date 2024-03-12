@@ -1,7 +1,7 @@
 <script scoped>
     import TodoTile from '../components/TodoTile.vue';
     import EmptyTodoList from '../components/EmptyTodoList.vue';
-    import MockTodoList from '../data/MockTodoList.json';
+    import { apiUrl } from '../router/index.js';
     import Pagination from '../components/Pagination.vue'
 
     export default {
@@ -19,20 +19,15 @@
             }
         },
 
-        // Simulating asynchronous fetch from API using setTimeout - For TESTING purposes only -  Assigning mock data to todos array
+        //Fetch todoList data from the server
         created() {
-            this.todos = MockTodoList;
-            },
-
-        //Fetch actual data from the server
-        // created() {
-        //     this.fetchTodos();
-        // },
+            this.fetchTodos();
+        },
 
         methods: {
             async fetchTodos() {
                 try {
-                    const response = await fetch('/todos');
+                    const response = await fetch(apiUrl + '/todos');
                     if(!response.ok) {
                         throw new Error('Failed to fetch todolist data');
                     }
