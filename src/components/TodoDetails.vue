@@ -41,10 +41,6 @@
                 }
             },
 
-            handleCancel() {
-                console.log("Canceled update of the todo, returning to main page.")
-            },
-
             updateName(newName) {
             this.todo.name = newName;
             },
