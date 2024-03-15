@@ -35,7 +35,7 @@ export default {
 
 <template>
     <form class="form">
-        <label class="form__label">Task</label>
+        <label class="form__label">Todo</label>
         <br>
         <input class="form__input" type="text" :value="name" @input="$emit('update:name', $event.target.value)" maxlength="100">
         <br>

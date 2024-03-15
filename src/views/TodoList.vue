@@ -67,7 +67,7 @@
         <div v-if="todos.length > 0" class="container__todo-list">
             <div class="container__todo-list__div">
                 <h1 class="container__todo-list__div__title">Todos</h1>
-               <router-link class="container__todo-list__div__addtodo" :to="{ name: 'Create' }" tag="button">Add new Todo</router-link>
+               <router-link class="container__todo-list__div__addtodo" :to="{ name: 'Create' }" tag="button">Create Todo</router-link>
             </div>
 
             <div class="container__todo-list__todos">
