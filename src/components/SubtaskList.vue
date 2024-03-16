@@ -1,15 +1,42 @@
 <script scoped>
+import { apiUrl } from '../router/index.js'
+
     export default {
         props: {
             steps: {
                 type: Array,
                 default: () => []
+            },
+
+            todoId: {
+                required: true
             }
         },
         methods: {
-            handleDeleteStep(stepId) {
-                //Make api call to delete step with stepId from todoList, then make GetTodoById call again to refresh list.
-                console.log("Delete step with id: " + stepId);
+            async handleDeleteStep(stepIds) {
+                if (this.todoId) {
+                    try {
+                        for (const stepId of stepIds) {
+                            const response = await fetch(`${apiUrl}/todos/${this.todoId}/steps?stepId=${stepId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-type': 'application/json; charset=UTF-8'
+                                }
+                            });
+
+                            if (response.ok) {
+                                console.log("Deleted step from the todo's subtaskList");
+                                // Emit an event to notify the parent component about the deleted subtask
+                                this.$emit('stepDeleted', stepId);
+                            } else {
+                                const errorMessage = await response.text(); // Extract error message from response
+                                throw new Error(`Failed to delete subtask: ${errorMessage}`);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error deleting subtask:', error);
+                    }
+                }
             }
         }
     }
@@ -23,7 +50,7 @@
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Name: ' + step.name" maxlength="100">
             <br>
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Description: ' + step.description" maxlength="3000">
-            <button class="subtasklist__subtask__delete" @click="handleDeleteStep(step.id)">Delete Subtask</button>
+            <button class="subtasklist__subtask__delete" @click="handleDeleteStep([step.id])">Delete Subtask</button>
             <br class="form__break">
         </div>
     </div>

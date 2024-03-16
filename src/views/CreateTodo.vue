@@ -33,14 +33,19 @@
                     });
 
                     if(!response.ok) {
-                       throw new Error('Failed to create todo, please check your inputs.') 
+                        alert('Failed to create todo, please check your inputs.'); 
+                       throw new Error('Failed to create todo, please check your inputs.');
                     }
 
                     this.$router.push({ name: 'Todos' }); //If POST was successful -> redirect user to todolist component.
-                    console.log('Todo was successfuly saved.')
+                    console.log('Todo was successfully saved.')
                 } catch (error) {
                     console.error('Error when creating todo: ' + error);
                 }
+            },
+
+            handleAddSubtask(newSubtask) {
+                todo.steps.push(newSubtask);
             }
         }
     }
@@ -63,8 +68,8 @@
             <option class="form__dropdown__option" value="MEDIUM">MEDIUM</option>
             <option class="form__dropdown__option" value="LOW">LOW</option>
         </select>
-        <SubtaskList v-model="steps"/>
-        <AddSubtask/>
+        <SubtaskList :steps="todo.steps"/>
+        <AddSubtask :todo="todo" @addSubtask="handleAddSubtask"/>
         <button class="form__button--add" type="submit">Create Todo</button>
         <br class="form__break">
     </form>
