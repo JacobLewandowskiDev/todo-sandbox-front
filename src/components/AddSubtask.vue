@@ -1,7 +1,7 @@
 <script scoped>
 import { apiUrl } from '../router/index.js';
 
-    export default {
+    export default {     
         props: {
             todoId: {
                 required: false

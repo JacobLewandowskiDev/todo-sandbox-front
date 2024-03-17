@@ -2,40 +2,46 @@
 import { apiUrl } from '../router/index.js'
 
     export default {
+        emits: ['refreshTodoDetails'],
+
         props: {
             steps: {
                 type: Array,
-                default: () => []
+                default: () => [],
             },
 
             todoId: {
-                required: true
+                default: null,
+                required: false
             }
         },
         methods: {
             async handleDeleteStep(stepIds) {
-                if (this.todoId) {
-                    try {
-                        for (const stepId of stepIds) {
-                            const response = await fetch(`${apiUrl}/todos/${this.todoId}/steps?stepId=${stepId}`, {
-                                method: 'DELETE',
-                                headers: {
-                                    'Content-type': 'application/json; charset=UTF-8'
-                                }
-                            });
+                try {
+                    if (this.todoId) {
 
-                            if (response.ok) {
-                                console.log("Deleted step from the todo's subtaskList");
-                                // Emit an event to notify the parent component about the deleted subtask
-                                this.$emit('stepDeleted', stepId);
-                            } else {
-                                const errorMessage = await response.text(); // Extract error message from response
-                                throw new Error(`Failed to delete subtask: ${errorMessage}`);
+                    for (const stepId of stepIds) {
+                        const response = await fetch(`${apiUrl}/todos/${this.todoId}/steps?stepId=${stepId}`, {
+                            method: 'DELETE',
+                            headers: {
+                                'Content-type': 'application/json; charset=UTF-8'
                             }
+                        });
+
+                        if (response.ok) {
+                            console.log("Deleted step from the todo's subtaskList");
+                            // Refresh the todoDetail upon deletion of a step
+                        } else {
+                            const errorMessage = await response.text(); // Extract error message from response
+                            throw new Error(`Failed to delete subtask: ${errorMessage}`);
                         }
-                    } catch (error) {
-                        console.error('Error deleting subtask:', error);
                     }
+                    this.$emit('refreshTodoDetails');
+                } else {
+                    this.steps = this.steps.filter(step => !stepIds.includes(step.id));
+                }
+                } catch (error) {
+                    console.error('Error deleting subtask:', error);
                 }
             }
         }

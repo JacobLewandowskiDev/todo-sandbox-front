@@ -1,4 +1,6 @@
 <script scoped>
+import { apiUrl } from "../router/index.js";
+
 export default {
     props: {
         id: {
@@ -25,10 +27,30 @@ export default {
                 //Add api call to update Todo
             },
 
-            handleDeleteTodo() {
-                console.log("Deleted the todo with id: " +  this.id);
-                //add api call to delete todo
+        async handleDeleteTodo(todoId) {
+            if (todoId) {
+                try {
+                    const response = await fetch(`${apiUrl}/todos/${todoId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    });
+
+                    if (response.ok) {
+                        console.log("Deleted a todo from the database");
+                        // Go back to main page upon deletion of a todo
+                        this.$router.push({ name: 'Todos' }); //If DELETE was successful -> redirect user to todolist component.
+                    } else {
+                        const errorMessage = await response.text(); // Extract error message from response
+                        throw new Error(`Failed to delete todo: ${errorMessage}`);
+                    }
+
+                } catch (error) {
+                    console.error('Error deleting todo:', error);
+                }
             }
+        }
     }
 }
 </script>
@@ -49,7 +71,7 @@ export default {
         <div class="form__container">
             <router-link class="form__container__button" :to="{ name: 'Todos' }" tag="button">Cancel</router-link>
             <button class="form__container__button" @click="handleSave()">Save</button>
-            <button class="form__container__button--delete" @click="handleDeleteTodo()">Delete</button>
+            <button class="form__container__button--delete" @click="handleDeleteTodo(this.id)">Delete</button>
         </div>
     </form>
     <br class="form__break">
