@@ -42,7 +42,35 @@ import { apiUrl } from '../router/index.js'
                 } catch (error) {
                     console.error('Error deleting subtask:', error);
                 }
-            }
+            },
+
+            async handleUpdateStep(index) {
+                const updatedStep = {
+                id: this.steps[index],
+                name: this.name,
+                description: this.description,
+                priority: this.priority
+                };
+
+                try {
+                    if(this.todoId !== null) {
+                        updatedStep.id = this.steps[index].id;
+                    }
+                    const response = await fetch(`${apiUrl}/todos/${this.id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(updatedTodo)
+                    });
+                    if (!response.ok) {
+                        throw new Error('Application failed to update the Todo.');
+                    }
+                    console.log("Updated of the Todo was successfull");
+                } catch(error) {
+                    console.log('Error while updating the Todo:' + error);
+                }
+            },
         }
     }
 </script>
@@ -55,7 +83,10 @@ import { apiUrl } from '../router/index.js'
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Name: ' + step.name" maxlength="100">
             <br>
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Description: ' + step.description" maxlength="3000">
-            <button class="subtasklist__subtask__delete" @click="handleDeleteStep(index)" type="button">Delete Subtask</button>
+            <div class="subtasklist__subtask__container">
+                <button class="subtasklist__subtask__container--update" @click="handleUpdateStep(index)" type="button">Update Subtask</button>
+                <button class="subtasklist__subtask__container--delete" @click="handleDeleteStep(index)" type="button">Delete Subtask</button>
+            </div>
             <br class="form__break">
         </div>
     </div>
@@ -70,6 +101,16 @@ import { apiUrl } from '../router/index.js'
 .empty-subtasks {
     display: none;
     visibility: hidden;
+}
+
+.subtasklist__subtask__container {
+    display: block;
+}
+
+.subtasklist__subtask__container--update,
+.subtasklist__subtask__container--delete {
+    width: 48%;
+    text-wrap: nowrap;
 }
 
 </style>

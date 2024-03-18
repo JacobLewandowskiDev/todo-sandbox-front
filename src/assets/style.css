@@ -54,7 +54,8 @@ html {
 .empty-list__button, 
 .form__button--delete,
 .form__container__button--delete,
-.subtasklist__subtask__delete, 
+.subtasklist__subtask__container--delete,
+.subtasklist__subtask__container--update, 
 .form__button--add, 
 .container__todo-list__div__addtodo, 
 .form__container__button {
@@ -138,7 +139,7 @@ html {
 
 .form__button--delete,
 .form__container__button--delete,
-.subtasklist__subtask__delete, 
+.subtasklist__subtask__container--delete, 
 .form__button--add  {
     display: block;
     float: right;
@@ -150,12 +151,12 @@ html {
     background-color: var(--add-create-button);
 }
 
-.form__button--delete:hover, .subtasklist__subtask__delete:hover, .form__container__button--delete:hover {
+.form__button--delete:hover, .subtasklist__subtask__container--delete:hover, .form__container__button--delete:hover {
     background-color: var(--delete-button-hover);
     color: var(--button-font-color);
 }
   
-.form__button--delete:active, .subtasklist__subtask__delete:active, .form__container__button--delete:active {
+.form__button--delete:active, .subtasklist__subtask__container--delete:active, .form__container__button--delete:active {
     background-color: var(--delete-button-active);
 }
 
@@ -209,7 +210,7 @@ html {
     scrollbar-color: var(--scrollbar-colors-hover);
 }
 
-.subtasklist__subtask__delete {
+.subtasklist__subtask__container--delete {
     width: 100%;
 }
 
