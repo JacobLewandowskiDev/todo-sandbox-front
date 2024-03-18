@@ -22,10 +22,29 @@ export default {
         }
     },
     methods: {
-        handleSave() {
-                console.log("Saved the todo");
-                //Add api call to update Todo
-            },
+        async handleUpdateTodo() {
+            const updatedTodo = {
+                name: this.name,
+                description: this.description,
+                priority: this.priority
+            };
+
+            try {
+                const response = await fetch(`${apiUrl}/todos/${this.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedTodo)
+                });
+                if (!response.ok) {
+                    throw new Error('Application failed to update the Todo.');
+                }
+                console.log("Updated of the Todo was successfull");
+            } catch(error) {
+                console.log('Error while updating the Todo:' + error);
+            }
+        },
 
         async handleDeleteTodo(todoId) {
             if (todoId) {
@@ -70,8 +89,8 @@ export default {
         </select>
         <div class="form__container">
             <router-link class="form__container__button" :to="{ name: 'Todos' }" tag="button">Cancel</router-link>
-            <button class="form__container__button" @click="handleSave()">Save</button>
-            <button class="form__container__button--delete" @click="handleDeleteTodo(this.id)">Delete</button>
+            <button class="form__container__button" @click="handleUpdateTodo()">Save</button>
+            <button class="form__container__button--delete" @click="handleDeleteTodo(this.id)" type="button">Delete</button>
         </div>
     </form>
     <br class="form__break">

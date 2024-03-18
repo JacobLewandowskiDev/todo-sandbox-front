@@ -2,7 +2,7 @@
 import { apiUrl } from '../router/index.js'
 
     export default {
-        emits: ['refreshTodoDetails'],
+        emits: ['refreshTodoDetails', 'deleteStepLocally'],
 
         props: {
             steps: {
@@ -16,11 +16,11 @@ import { apiUrl } from '../router/index.js'
             }
         },
         methods: {
-            async handleDeleteStep(stepIds) {
+            async handleDeleteStep(index) { // Change the parameter to index
                 try {
-                    if (this.todoId) {
+                    if (this.todoId !== null) {
+                        const stepId = this.steps[index].id; // Get the ID using the index
 
-                    for (const stepId of stepIds) {
                         const response = await fetch(`${apiUrl}/todos/${this.todoId}/steps?stepId=${stepId}`, {
                             method: 'DELETE',
                             headers: {
@@ -31,15 +31,14 @@ import { apiUrl } from '../router/index.js'
                         if (response.ok) {
                             console.log("Deleted step from the todo's subtaskList");
                             // Refresh the todoDetail upon deletion of a step
+                            this.$emit('refreshTodoDetails');
                         } else {
                             const errorMessage = await response.text(); // Extract error message from response
                             throw new Error(`Failed to delete subtask: ${errorMessage}`);
                         }
+                    } else {
+                        this.$emit('deleteStepLocally', index); // Emit the index instead of stepId
                     }
-                    this.$emit('refreshTodoDetails');
-                } else {
-                    this.steps = this.steps.filter(step => !stepIds.includes(step.id));
-                }
                 } catch (error) {
                     console.error('Error deleting subtask:', error);
                 }
@@ -52,11 +51,11 @@ import { apiUrl } from '../router/index.js'
     <label class="label">Subtasks</label>
     <br>
     <div class="subtasklist" :class="{ 'empty-subtasks': steps.length === 0}">
-        <div v-for="step in steps" :key="step.id" class="subtasklist__subtask">
+        <div v-for="(step, index) in steps" :key="index" class="subtasklist__subtask">
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Name: ' + step.name" maxlength="100">
             <br>
             <input class="subtasklist__subtask__input" type="text" :placeholder="'Description: ' + step.description" maxlength="3000">
-            <button class="subtasklist__subtask__delete" @click="handleDeleteStep([step.id])">Delete Subtask</button>
+            <button class="subtasklist__subtask__delete" @click="handleDeleteStep(index)" type="button">Delete Subtask</button>
             <br class="form__break">
         </div>
     </div>
