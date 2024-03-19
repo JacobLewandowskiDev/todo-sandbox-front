@@ -65,7 +65,7 @@
 <template>
     <div v-if="todo" class="container">
         <UpdateTodo :id="todo.id" :name="todo.name" :description="todo.description" :priority="todo.priority" @update:name="updateName" @update:description="updateDescription" @update:priority="updatePriority"/>
-        <SubtaskList :todoId="todo.id" :steps="todo.steps" @refreshTodoDetails="fetchTodoById(todo.id)"/>
+        <SubtaskList :todoId="todo.id" :steps="todo.steps" :showUpdateButton="true" @refreshTodoDetails="fetchTodoById(todo.id)"/>
         <AddSubtask :todoId="todo.id" @addSubtask="handleAddSubtask" @refreshTodoDetails="fetchTodoById(todo.id)"/>
     </div>
 </template>

@@ -41,6 +41,7 @@ export default {
                     throw new Error('Application failed to update the Todo.');
                 }
                 console.log("Updated of the Todo was successfull");
+                this.$router.push({ name: 'Todos' });
             } catch(error) {
                 console.log('Error while updating the Todo:' + error);
             }
@@ -89,7 +90,7 @@ export default {
         </select>
         <div class="form__container">
             <router-link class="form__container__button" :to="{ name: 'Todos' }" tag="button">Cancel</router-link>
-            <button class="form__container__button" @click="handleUpdateTodo()">Save</button>
+            <button class="form__container__button" @click="handleUpdateTodo()" type="button">Save</button>
             <button class="form__container__button--delete" @click="handleDeleteTodo(this.id)" type="button">Delete</button>
         </div>
     </form>

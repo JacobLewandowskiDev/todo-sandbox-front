@@ -2,13 +2,18 @@
 import { apiUrl } from '../router/index.js'
 
     export default {
-        emits: ['refreshTodoDetails', 'deleteStepLocally'],
+        emits: ['refreshTodoDetails', 'deleteStepLocally', 'updateStepLocally'],
 
         props: {
             steps: {
                 type: Array,
                 default: () => [],
             },
+
+            showUpdateButton: {
+                type: Boolean,
+                default: false, // Default value to show the update button
+                },
 
             todoId: {
                 default: null,
@@ -44,33 +49,9 @@ import { apiUrl } from '../router/index.js'
                 }
             },
 
-            async handleUpdateStep(index) {
-                const updatedStep = {
-                id: this.steps[index],
-                name: this.name,
-                description: this.description,
-                priority: this.priority
-                };
-
-                try {
-                    if(this.todoId !== null) {
-                        updatedStep.id = this.steps[index].id;
-                    }
-                    const response = await fetch(`${apiUrl}/todos/${this.id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify(updatedTodo)
-                    });
-                    if (!response.ok) {
-                        throw new Error('Application failed to update the Todo.');
-                    }
-                    console.log("Updated of the Todo was successfull");
-                } catch(error) {
-                    console.log('Error while updating the Todo:' + error);
-                }
-            },
+            handleUpdateStep(index) {
+                this.$emit('updateStepLocally', index, this.steps[index]);
+            }
         }
     }
 </script>
@@ -80,11 +61,11 @@ import { apiUrl } from '../router/index.js'
     <br>
     <div class="subtasklist" :class="{ 'empty-subtasks': steps.length === 0}">
         <div v-for="(step, index) in steps" :key="index" class="subtasklist__subtask">
-            <input class="subtasklist__subtask__input" type="text" :placeholder="'Name: ' + step.name" maxlength="100">
+            <input class="subtasklist__subtask__input" type="text" v-model="step.name" :placeholder="'Name: ' + step.name" maxlength="100" @input="handleUpdateStep(index)">
             <br>
-            <input class="subtasklist__subtask__input" type="text" :placeholder="'Description: ' + step.description" maxlength="3000">
+            <input class="subtasklist__subtask__input" type="text" v-model="step.description" :placeholder="'Description: ' + step.description" maxlength="3000" @input="handleUpdateStep(index)">
             <div class="subtasklist__subtask__container">
-                <button class="subtasklist__subtask__container--update" @click="handleUpdateStep(index)" type="button">Update Subtask</button>
+                <button class="subtasklist__subtask__container--update" v-if="showUpdateButton" @click="handleUpdateStep(index, { step })" type="button">Update Subtask</button>
                 <button class="subtasklist__subtask__container--delete" @click="handleDeleteStep(index)" type="button">Delete Subtask</button>
             </div>
             <br class="form__break">

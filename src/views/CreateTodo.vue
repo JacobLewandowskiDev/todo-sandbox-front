@@ -46,10 +46,17 @@
 
             handleAddSubtask(newSubtask) {
                 this.todo.steps.push(newSubtask);
+                console.log('Step was added');
             },
 
             handleDeleteStepLocally(index) {
                 this.todo.steps.splice(index, 1);
+                console.log('Step was deleted');
+            },
+
+            handleUpdateStepLocally(index, updatedStepData) {
+                this.todo.steps[index] = updatedStepData;
+                console.log('Step was updated');
             }
         }
     }
@@ -72,7 +79,7 @@
             <option class="form__dropdown__option" value="MEDIUM">MEDIUM</option>
             <option class="form__dropdown__option" value="LOW">LOW</option>
         </select>
-        <SubtaskList :steps="todo.steps" @deleteStepLocally="handleDeleteStepLocally"/>
+        <SubtaskList :steps="todo.steps" @deleteStepLocally="handleDeleteStepLocally" @updateStepLocally="handleUpdateStepLocally"/>
         <AddSubtask :todo="todo" @addSubtask="handleAddSubtask"/>
         <button class="form__button--add" type="submit">Create Todo</button>
         <br class="form__break">
