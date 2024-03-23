@@ -57,7 +57,7 @@ This command will generate a production-ready build in the dist directory.
 
 ## Backend portion of the application:
 To learn how to set up and run the backend environment please follow the link below to the application backend repository:
-   'https://github.com/JacobLewandowskiDev/todo-sandbox/tree/jacobscode'
+   https://github.com/JacobLewandowskiDev/todo-sandbox/tree/jacobscode
 
 
 
