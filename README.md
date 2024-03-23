@@ -1,4 +1,4 @@
-# (Vue 3 + Vite) Virtual Task & Productivity Tracker Project
+# Virtual Task & Productivity Tracker Project - Frontend
 
 This project is the frontend portion of a full-stack Virtual Task & Productivity Tracker application built with Vue 3 and Vite. 
 It interacts with a Java Spring Boot backend API to perform CRUD operations on Tasks and their associated Steps for completion.
