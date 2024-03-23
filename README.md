@@ -21,18 +21,18 @@ Follow these steps to get the project up and running on your local machine:
    git clone <repository-url>
 
 2. Navigate to your project directory:
-```
-cd vue3-vite-todo-app
-```
+   ```
+   cd vue3-vite-todo-app
+   ```
 
 4. Install dependencies:
-```
-npm install
-```
+   ```
+   npm install
+   ```
 5. Start the Vite development server:
-```
-npm run dev
-```
+   ```
+   npm run dev
+   ```
 
 6. Access the application in your web browser via: 'http://localhost/${Port}
 
@@ -50,14 +50,14 @@ This application interacts with the following API endpoints:
 
 ## Building for production
 To build the project for production, run the following command:
-```
-npm run build
-```
+   ```
+   npm run build
+   ```
 This command will generate a production-ready build in the dist directory.
 
 ## Backend portion of the application:
 To learn how to set up and run the backend environment please follow the link below to the application backend repository:
-`https://github.com/JacobLewandowskiDev/todo-sandbox/tree/jacobscode`
+   `https://github.com/JacobLewandowskiDev/todo-sandbox/tree/jacobscode`
 
 
 
