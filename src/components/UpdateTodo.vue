@@ -36,6 +36,8 @@ export default {
         updatedTodo
       );
 
+      console.log(success, error);
+
       if (success) {
         this.$router.push({ name: "Todos" });
         console.log("Todo was updated successfully.");
