@@ -34,7 +34,7 @@ Follow these steps to get the project up and running on your local machine:
    npm run dev
    ```
 
-6. Access the application in your web browser via: 'http://localhost/${Port}
+6. Access the application in your web browser via: 'http://localhost:5173
 
 ## API Endpoints
 
