@@ -3,7 +3,7 @@ import TodoList from "../views/TodoList.vue";
 import CreateTodo from "../views/CreateTodo.vue";
 import TodoDetails from "../components/TodoDetails.vue";
 
-export const apiUrl = "https://www.jakub-lewandowski.com:2052";
+export const apiUrl = "https://www.jakub-lewandowski.com/vpt/api";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
